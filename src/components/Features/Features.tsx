@@ -12,9 +12,9 @@ const Features: React.FC = () => {
   return (
     <Layout style={{ marginLeft: 200 }}>
       <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="/task" element={<ToDoListSection />} />
-        <Route path="/agenda" element={<Agenda />} />
+        <Route path="/task-manager" element={<Home />} />
+        <Route path="/task-manager/task" element={<ToDoListSection />} />
+        <Route path="/task-manager/agenda" element={<Agenda />} />
       </Routes>
       <Footer style={{ textAlign: 'center' }}>
         Life Manager ©2023 Created by Puriwat Nitijarasrat

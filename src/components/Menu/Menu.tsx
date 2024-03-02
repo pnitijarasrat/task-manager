@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu } from "antd";
 import { HomeOutlined, SettingOutlined, PlusOutlined, InboxOutlined, FieldTimeOutlined, BranchesOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TagsDrawer from "./TagDrawer";
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -31,16 +31,16 @@ const NavMenu: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     setSelectedKeys([location.pathname]);
   }, [location.pathname]);
 
   const items: MenuItem[] = [
-    getItem('Home', '/', < HomeOutlined rev="..." />, null, () => { window.location.href = '/' }),
-    getItem('Task', '/task', < InboxOutlined rev="..." />, null, () => { window.location.href = '/task' }),
-    getItem('Agenda', '/agenda', < FieldTimeOutlined rev="..." />, null, () => { window.location.href = '/agenda' }),
-    getItem('Second Brain', '/secondbrain', <BranchesOutlined rev="..." />, null, () => { window.location.href = '/secondbrain' }),
+    getItem('Home', '/task-manager', < HomeOutlined rev="..." />, null, () => { navigate('/task-manager') }),
+    getItem('Task', '/task-manager/task', < InboxOutlined rev="..." />, null, () => { navigate('/task-manager/task') }),
+    getItem('Agenda', '/task-manager/agenda', < FieldTimeOutlined rev="..." />, null, () => { navigate('/task-manager/agenda') }),
     getItem('Setting', 'setting', < SettingOutlined rev="..." />,
       [
         getItem('Add Tag', 'tag', < PlusOutlined rev="..." />, null, () => setTagsDrawer(true))
