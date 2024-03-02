@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NavMenu from './components/Menu/Menu';
+import { BrowserRouter } from "react-router-dom";
+import './App.css'
+import Features from './components/Features/Features';
+import { Layout } from 'antd';
+
+const { Header, Sider } = Layout;
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Sider
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            bottom: 0,
+          }}>
+          <NavMenu />
+        </Sider>
+        <Features />
+      </Layout>
+    </BrowserRouter>
   );
+
 }
 
 export default App;

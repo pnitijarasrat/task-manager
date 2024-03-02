@@ -1,0 +1,1 @@
+export const url = 'https://react-http-e9374-default-rtdb.asia-southeast1.firebasedatabase.app'
