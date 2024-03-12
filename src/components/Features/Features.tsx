@@ -17,7 +17,7 @@ const Features: React.FC = () => {
         <Route path="/task-manager/agenda" element={<Agenda />} />
       </Routes>
       <Footer style={{ textAlign: 'center' }}>
-        Life Manager ©2023 Created by Puriwat Nitijarasrat
+        Technology Team Manager ©2024 Created by Puriwat Nitijarasrat
       </Footer>
     </Layout>
   )

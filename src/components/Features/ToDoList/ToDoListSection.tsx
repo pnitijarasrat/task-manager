@@ -9,7 +9,6 @@ import SubHeader from "../../UI/SubHeader";
 import { Layout, Button, Typography } from 'antd'
 
 const { Content, } = Layout
-const { Title } = Typography
 
 const ToDoListSection: React.FC = () => {
 
@@ -40,12 +39,10 @@ const ToDoListSection: React.FC = () => {
       <Block >
         <Button type="primary" block onClick={() => setTaskDrawer(true)}>Add Task</Button>
       </Block>
-      <Block>
-        <TaskDrawer open={taskDrawer} onClose={() => setTaskDrawer(false)} get={getTask} tagsArr={tag} />
-        <ToDoListTable data={task} isLoading={isGettingTask} tagsArr={tag} done={handleFinishTask} isFinishing={isFinishing}
-          deleteTask={handleDeleteTask} isDeleting={isDeleting}
-        />
-      </Block>
+      <TaskDrawer open={taskDrawer} onClose={() => setTaskDrawer(false)} get={getTask} tagsArr={tag} />
+      <ToDoListTable data={task} isLoading={isGettingTask} tagsArr={tag} done={handleFinishTask} isFinishing={isFinishing}
+        deleteTask={handleDeleteTask} isDeleting={isDeleting} get={getTask}
+      />
     </ Content>
   )
 }

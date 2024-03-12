@@ -6,6 +6,7 @@ import { dataRemap } from "../Function/dataRemap";
 export interface newTaskType {
   taskName: string,
   dueDate: string,
+  owner: string
   tags: string
   isDone: boolean
 }
@@ -13,7 +14,6 @@ export interface newTaskType {
 export interface TaskType extends newTaskType {
   key: string
 }
-
 
 export default function useTaskAPI() {
   const [isAdding, setIsAdding] = useState(false)
@@ -92,6 +92,24 @@ export default function useTaskAPI() {
     }
   }, [])
 
+  const updateTask = useCallback(async (task: TaskType) => {
+    setIsFinishing(true)
+    try {
+      const res = await fetch(`${url}/task/${task.key}.json`, {
+        method: 'PATCH',
+        body: JSON.stringify({ ...task }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      setIsFinishing(false)
+      if (res.ok) feedback.success("Update Task")
+    } catch (e) {
+      setIsFinishing(false)
+      feedback.error(e as Error)
+    }
+  }, [])
+
 
   return {
     isAdding,
@@ -102,6 +120,7 @@ export default function useTaskAPI() {
     doneTask,
     isFinishing,
     deleteTask,
-    isDeleting
+    isDeleting,
+    updateTask
   }
 }

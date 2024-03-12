@@ -31,6 +31,7 @@ const TaskDrawer: React.FC<TaskDrawerProp> = ({ open, onClose, get, tagsArr }) =
       taskName: form.getFieldValue('taskName'),
       dueDate: form.getFieldValue('dueDate').format('YYYY-MM-DD'),
       tags: selectedTag,
+      owner: form.getFieldValue('owner'),
       isDone: false
     }
     await addTask(p)
@@ -64,6 +65,9 @@ const TaskDrawer: React.FC<TaskDrawerProp> = ({ open, onClose, get, tagsArr }) =
             onChange={handleChange}
             value={selectedTag}
           />
+        </Form.Item>
+        <Form.Item name="owner">
+          <Input placeholder="Owner" />
         </Form.Item>
         <Form.Item name="dueDate">
           <DatePicker placeholder="Due Date" disabledDate={disabledDate} />
